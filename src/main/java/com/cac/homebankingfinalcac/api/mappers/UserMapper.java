@@ -1,6 +1,7 @@
 package com.cac.homebankingfinalcac.api.mappers;
 
 import com.cac.homebankingfinalcac.api.dtos.UserDTO;
+import com.cac.homebankingfinalcac.domain.models.AccountEntity;
 import com.cac.homebankingfinalcac.domain.models.UserEntity;
 import lombok.experimental.UtilityClass;
 
