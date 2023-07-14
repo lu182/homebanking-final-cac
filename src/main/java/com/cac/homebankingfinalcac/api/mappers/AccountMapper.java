@@ -13,7 +13,6 @@ public class AccountMapper {
     public AccountEntity dtoToAccountMap(AccountDTO dto) {
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setBalance(dto.getAmount());
-        //accountEntity.setOwner(dto.getOwner()); //NO VA? - Ver de pasarle solo el id de owner - Pendiente ver con profe
         return accountEntity;
     }
 
@@ -21,8 +20,10 @@ public class AccountMapper {
         AccountDTO dto = new AccountDTO();
         dto.setIdAccount(accountEntity.getIdAccount());
         dto.setAmount(accountEntity.getBalance());
-        UserDTO userDtoOwner = UserMapper.userToDtoMap(accountEntity.getOwner());
-        dto.setOwner(userDtoOwner);
+        if (accountEntity.getOwner() != null){
+            UserDTO userDtoOwner = UserMapper.userToDtoMap(accountEntity.getOwner());
+            dto.setOwner(userDtoOwner);
+        }
         return dto;
     }
 

@@ -115,14 +115,20 @@ public class AccountService {
             Optional<AccountEntity> accountFound = accountRepository.findById(id);
             if(accountFound.isPresent()){
                 AccountEntity accountEntity = accountFound.get();
-
-                AccountEntity accountUpdated = AccountMapper.dtoToAccountMap(accountDto);
-                accountUpdated.setIdAccount(accountEntity.getIdAccount());
-
+                if(accountDto.getAmount() != null){
+                    accountEntity.setBalance(accountDto.getAmount());
+                }
+                if (accountDto.getOwner() != null){
+                    UserEntity userEntity = userRepository.getReferenceById(accountDto.getOwner().getId());
+                    if (userEntity != null){
+                        accountEntity.setOwner(userEntity);
+                    }
+                }
                 LOGGER.info("Cuenta actualizada con éxito en la BD");
-                AccountEntity accountSaved = accountRepository.save(accountUpdated);
+                AccountEntity accountSaved = accountRepository.save(accountEntity);
 
                 return AccountMapper.accountToDtoMap(accountSaved);
+
             }else{
                 LOGGER.error("No se encontró la cuenta con ID: " + id);
                 throw new PersonalizedException(HttpStatus.NOT_FOUND, "La cuenta que intenta actualizar no existe");
