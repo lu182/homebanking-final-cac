@@ -1,4 +1,7 @@
-﻿# Homebanking
+
+![cac](https://github.com/lu182/homebanking-final-cac/assets/39106189/94414aa8-bec2-4ba0-af75-b5643576a91f)
+
+ # Homebanking
 
 Aplicación de homebanking desarrollado en el marco del programa Codo a Codo 4.0 para el curso de: Spring, que nos permite crear usuarios y cuentas bancarias, realizar depósitos y extracción de dinero, y realizar transferencias de fondos entre las cuentas.
 
