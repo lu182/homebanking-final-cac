@@ -8,8 +8,6 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class AccountMapper {
 
-    //TODO: Aplicar Patrón Builder.
-
     public AccountEntity dtoToAccountMap(AccountDTO dto) {
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setBalance(dto.getAmount());

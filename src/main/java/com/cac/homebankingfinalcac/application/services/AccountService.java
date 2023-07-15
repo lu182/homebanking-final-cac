@@ -73,11 +73,6 @@ public class AccountService {
     @Transactional
     public AccountDTO createAccount(AccountDTO accountDto) throws PersonalizedException {
         try {
-            /*if(accountRepository.existsByAccountNumber(accountDto.getAccountNumber()).intValue() > 0){
-                LOGGER.error("La cuenta con número de cuenta: " + accountDto.getAccountNumber() + " ya existe.");
-                throw new PersonalizedException(HttpStatus.BAD_REQUEST, "Ya hay una cuenta con ese número de cuenta");
-            }*/
-
             //Obtengo el id del UserDTO owner q viene en el accountDto
             Optional<UserEntity> userEntity = userRepository.findById(accountDto.getOwner().getId());
             //Mapeo el accountDto q me vino a una accountEntity(accountModel)
@@ -108,7 +103,6 @@ public class AccountService {
     }
 
     //PUT ACCOUNT:
-    //TODO: CQRS
     @Transactional
     public AccountDTO updateAccount(Long id, AccountDTO accountDto){
         try {

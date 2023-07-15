@@ -61,7 +61,6 @@ public class UserService {
             return userDto;
 
         }catch (NullPointerException e){
-            //Logger para consola
             LOGGER.error("Clase: {} -> Mensaje: {}", e.getClass().getCanonicalName(), e.getMessage());
             e.printStackTrace();
             throw new PersonalizedException(HttpStatus.NOT_FOUND, "El usuario con ID " + id + " no existe");
@@ -99,7 +98,6 @@ public class UserService {
     }
 
     //PUT:
-    //TODO: CQRS
     public UserDTO updateUser(Long id, UserDTO userDto) {
         try {
             Optional<UserEntity> userFound = userRepository.findById(id);

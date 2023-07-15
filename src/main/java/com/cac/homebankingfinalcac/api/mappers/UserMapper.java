@@ -11,8 +11,6 @@ import java.util.List;
 @UtilityClass
 public class UserMapper {
 
-    //TODO: Aplicar Patrón Builder
-
     public UserEntity dtoToUserMap(UserDTO dto){
         UserEntity user = new UserEntity();
         user.setUsername(dto.getUsername());
